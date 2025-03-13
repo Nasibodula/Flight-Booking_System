@@ -6,7 +6,7 @@ import PopularDestinations from '../components/Home/PopularDestinations'
 import HowFlyWithus from '../components/Home/HowFlyWithus'
 import FlightBooking from '../components/Home/FlightBooking'
 import FeaturesFlight from '../components/Home/FeaturesFlight'
-import Newsletter from '../components/Home/Newsletter'
+import Newsletter from '../components/Newsletter'
 import Blog from '../components/Home/Blog'
 
 export default function Homepage() {
