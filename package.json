@@ -14,9 +14,11 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.3.0",
     "react-scripts": "5.0.1",
+    "react-spring": "^10.0.1",
     "sass": "^1.89.0",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
+    "swiper": "^11.2.7",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

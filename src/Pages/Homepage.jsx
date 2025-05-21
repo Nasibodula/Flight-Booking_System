@@ -1,16 +1,16 @@
 import React from 'react'
 import Hero from '../components/Home/Hero'
-import AboutUs from '../components/Home/AboutUs'
-import Advantage from '../components/Home/Advantage'
-import PopularDestinations from '../components/Home/PopularDestinations'
-import HowFlyWithus from '../components/Home/HowFlyWithus'
-import FlightBooking from '../components/Home/FlightBooking'
-import FeaturesFlight from '../components/Home/FeaturesFlight'
+import PopularDestinations from '../components/Home/Destination/Destination'
 import Newsletter from '../components/Newsletter'
-import Blog from '../components/Home/Blog'
+import Blog from '../components/Home/Blog/Blog'
 import FlightDashboard from '../components/Home/FlightDashboard/FlightDashboard'
 import "./styles/Home.scss";
 import ExtraService from '../components/Home/ExtraServices/ExtraServices'
+import CabinClass from '../components/Home/CabinClass/CabinClass'
+import AboutUs from '../components/Home/AboutUs/AboutUs'
+import Campaign from '../components/Home/Campaign/Campaign'
+import Faq from '../components/Home/Faq/Faq'
+
 
 export default function Homepage() {
   return (
@@ -18,12 +18,12 @@ export default function Homepage() {
         <Hero/>
         <FlightDashboard/>
         <ExtraService/>
+        <CabinClass/>
         <AboutUs/>
-        <Advantage/>
+        <Campaign/>
+        <Faq/>
         <PopularDestinations/>
-        <HowFlyWithus/>
         <Blog/>
-        <Newsletter/>
     </div>
   )
 }
