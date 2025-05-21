@@ -24,7 +24,7 @@ const FlightDashboard = () => {
   };
 
   return (
-    <div className="flight-dashboard flex items-center justify-center p-10">
+    <div className="flight-dashboard flex items-center justify-center px-10">
       <div className="container">
         <div className="content">
           <div className="tab-wrapper">
