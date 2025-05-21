@@ -7,7 +7,7 @@ import { Navigation } from "swiper/modules";
 
 const Campaign = () => {
   return (
-    <div className="campaign flex items-center justify-center">
+    <div className="campaign flex items-center justify-center px-10">
       <div className="container">
         <div className="headline">
           <div className="title">Campaigns</div>

@@ -10,7 +10,7 @@ const Faq = () => {
   };
 
   return (
-    <div className="faq flex items-center justify-center">
+    <div className="faq flex items-center justify-center px-10">
       <div className="container">
         <div className="headline">
           <div className="title">Ask Any Question?</div>
