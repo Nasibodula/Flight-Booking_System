@@ -10,12 +10,14 @@ import Newsletter from '../components/Newsletter'
 import Blog from '../components/Home/Blog'
 import FlightDashboard from '../components/Home/FlightDashboard/FlightDashboard'
 import "./styles/Home.scss";
+import ExtraService from '../components/Home/ExtraServices/ExtraServices'
 
 export default function Homepage() {
   return (
-    <div className='home'>
+    <div className='home '>
         <Hero/>
         <FlightDashboard/>
+        <ExtraService/>
         <AboutUs/>
         <Advantage/>
         <PopularDestinations/>

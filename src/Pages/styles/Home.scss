@@ -1,6 +1,7 @@
 @import "../../../styles/variables.scss";
 
 .home {
+
     .flight-dashboard {
         position: relative;
         z-index: 1;
@@ -874,6 +875,51 @@
                             }
                         }
                     }
+                }
+            }
+        }
+    }
+
+
+
+
+    .extra-service {
+        .headline {
+            .title {
+                @media (max-width: $sm-breakpoint) {
+                    font-size: 1.2rem;
+                }
+            }
+            .description {
+                @media (max-width: $sm-breakpoint) {
+                    font-size: 0.85rem;
+                }
+            }
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, auto);
+            .extra-service-card {
+                .extra-service-header {
+                    h3 {
+                    }
+                    .extra-service-icon {
+                        .extra-service-icon-content {
+                        }
+                    }
+                }
+                .extra-service-details {
+                    p {
+                    }
+                    .details-button {
+                    }
+                }
+                &:hover .extra-service-header {
+                    transform: translateY(-100px);
+                }
+                &:hover .extra-service-details {
+                    bottom: 5px;
                 }
             }
         }
