@@ -1,84 +1,188 @@
-import React, { useState } from 'react';
-import { Calendar, Clock, User, Search } from 'lucide-react';
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Icon } from "@iconify/react";
+
+// Data for hero wallpapers
+const heroWallpapers = [
+  {
+    id: 1,
+    imagePath: "/img/hero/france.jpg",
+    country: "France",
+    countryFlagIcon: "twemoji:flag-france",
+  },
+  {
+    id: 2,
+    imagePath: "/img/hero/spain.jpg",
+    country: "Spain",
+    countryFlagIcon: "twemoji:flag-spain",
+  },
+  {
+    id: 3,
+    imagePath: "/img/hero/china.jpg",
+    country: "China",
+    countryFlagIcon: "twemoji:flag-china",
+  },
+  {
+    id: 4,
+    imagePath: "/img/hero/italy.jpg",
+    country: "Italy",
+    countryFlagIcon: "twemoji:flag-italy",
+  },
+  {
+    id: 5,
+    imagePath: "/img/hero/turkiye.jpg",
+    country: "Turkiye",
+    countryFlagIcon: "twemoji:flag-turkiye",
+  },
+  {
+    id: 6,
+    imagePath: "/img/hero/mexico.jpg",
+    country: "Mexico",
+    countryFlagIcon: "twemoji:flag-mexico",
+  },
+  {
+    id: 7,
+    imagePath: "/img/hero/thailand.jpg",
+    country: "Thailand",
+    countryFlagIcon: "twemoji:flag-thailand",
+  },
+  {
+    id: 8,
+    imagePath: "/img/hero/germany.jpg",
+    country: "Germany",
+    countryFlagIcon: "twemoji:flag-germany",
+  },
+  {
+    id: 9,
+    imagePath: "/img/hero/united-kingdom.jpg",
+    country: "United Kingdom",
+    countryFlagIcon: "twemoji:flag-united-kingdom",
+  },
+  {
+    id: 10,
+    imagePath: "/img/hero/egypt.jpg",
+    country: "Egypt",
+    countryFlagIcon: "twemoji:flag-egypt",
+  },
+];
+
+// Shuffle array utility function
+const shuffleArray = (array) => {
+  const shuffledArray = [...array];
+  for (let i = shuffledArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
+  }
+  return shuffledArray;
+};
 
 const Hero = () => {
-  const [tripType, setTripType] = useState('oneWay');
-  const [date, setDate] = useState('18.03.2023');
-  const [time, setTime] = useState('11:00');
-  const [passengers, setPassengers] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [shuffledWallpapers, setShuffledWallpapers] = useState(heroWallpapers);
+  const slideIntervalRef = useRef(null);
+
+  // Initialize with shuffled wallpapers and random starting index
+  useEffect(() => {
+    const shuffled = shuffleArray(heroWallpapers);
+    setShuffledWallpapers(shuffled);
+    const randomIndex = Math.floor(Math.random() * shuffled.length);
+    setCurrentIndex(randomIndex);
+  }, []);
+
+  // Navigate to next slide
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % shuffledWallpapers.length);
+  }, [shuffledWallpapers.length]);
+
+  // Set up and clean up interval for auto-play
+  useEffect(() => {
+    if (isPlaying) {
+      slideIntervalRef.current = setInterval(() => {
+        nextSlide();
+      }, 6000);
+    }
+
+    return () => {
+      if (slideIntervalRef.current) {
+        clearInterval(slideIntervalRef.current);
+      }
+    };
+  }, [isPlaying, nextSlide]);
+
+  // Navigate to previous slide
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? shuffledWallpapers.length - 1 : prevIndex - 1
+    );
+  };
+
+  // Toggle play/pause
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const { country, countryFlagIcon } = shuffledWallpapers[currentIndex];
 
   return (
-      <div className="relative h-screen">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/assets/herobackground3.jpg"
-            alt="Modern airport architecture"
-            className="w-full h-full object-cover"
-          />
-        </div>
+    <div className="relative w-full h-[80vh] overflow-hidden">
+      {/* Images */}
+      <div className="absolute inset-0">
+        {shuffledWallpapers.map((wallpaper, index) => (
+          <div
+            key={wallpaper.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={wallpaper.imagePath}
+              alt={wallpaper.country}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
 
-        {/* Content */}
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-            <div className="container mx-auto px-4 h-full flex flex-col justify-center relative z-10">
-                <h1 className="text-white text-3xl md:text-4xl font-bold mb-2">
-                    Fly reassured and save your time with us
-                </h1>
-                <p className="text-white text-sm md:text-base mb-8">
-                    Business Aviation Solutions, Private and Group Charter Flights. Global Network.
-                </p>
-
-          {/* Flight Search Box */}
-                <div className="bg-white rounded-lg shadow-lg p-4">
-                    <div className="flex mb-4">
-                    <button 
-                        className={`px-4 py-2 rounded-l-md ${tripType === 'oneWay' ? 'bg-[#081B46] text-white' : 'bg-gray-200'}`}
-                        onClick={() => setTripType('oneWay')}
-                    >
-                        One way
-                    </button>
-                    <button 
-                        className={`px-4 py-2 rounded-r-md ${tripType === 'roundTrip' ? 'bg-[#081B46] text-white' : 'bg-gray-200'}`}
-                        onClick={() => setTripType('roundTrip')}
-                    >
-                        Round trip
-                    </button>
-                    </div>
-            
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-2">
-                    <div className="md:col-span-1">
-                        <input type="text" placeholder="From" className="w-full p-2 border rounded" />
-                    </div>
-                    <div className="md:col-span-1">
-                        <input type="text" placeholder="To" className="w-full p-2 border rounded" />
-                    </div>
-                    <div className="md:col-span-1">
-                        <input type="date" className="w-full p-2 border rounded" />
-                    </div>
-                    <div className="md:col-span-1">
-                        <input type="time" className="w-full p-2 border rounded" />
-                    </div>
-                    <div className="md:col-span-1">
-                        <select className="w-full p-2 border rounded">
-                        <option>1 Passenger</option>
-                        <option>2 Passengers</option>
-                        <option>3 Passengers</option>
-                        <option>4+ Passengers</option>
-                        </select>
-                    </div>
-                    </div>
-                
-                    <div className="mt-4 flex justify-end">
-                    <button className="bg-[#081B46] text-white px-6 py-2 rounded font-medium">
-                        Request Quote
-                    </button>
-                </div>
+      {/* Overlay with country details and navigation */}
+      <div className="absolute inset-0 flex flex-col  bg-black bg-opacity-30 p-6">
+        {/* Country details card */}
+        <div className="mt-auto mb-1">
+          <div className="bg-black bg-opacity-50 rounded-lg p-2 inline-block">
+            <div className="flex items-center gap-2">
+              <Icon icon={countryFlagIcon} className="text-xl" />
+              <h2 className="text-l font-bold text-white">{country}</h2>
+            </div>
           </div>
         </div>
+
+        {/* Navigation buttons */}
+        <div className="flex gap-2 justify-center mb-6">
+          <button 
+            className="bg-black bg-opacity-50 hover:bg-opacity-100  p-2 transition-all"
+            onClick={prevSlide}
+          >
+            <Icon icon="mingcute:left-fill" className="text-2xl text-white" />
+          </button>
+          <button 
+            className="bg-black bg-opacity-70 hover:bg-opacity-100 rounded-full p-2 transition-all"
+            onClick={togglePlayPause}
+          >
+            {isPlaying ? (
+              <Icon icon="mingcute:pause-fill" className="text-2xl text-white" />
+            ) : (
+              <Icon icon="mingcute:play-fill" className="text-2xl text-white" />
+            )}
+          </button>
+          <button 
+            className="bg-black bg-opacity-50 hover:bg-opacity-100  p-2 transition-all"
+            onClick={nextSlide}
+          >
+            <Icon icon="mingcute:right-fill" className="text-2xl text-white" />
+          </button>
+        </div>
       </div>
+    </div>
   );
 };
 
-
 export default Hero;
-

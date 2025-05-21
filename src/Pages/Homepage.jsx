@@ -8,11 +8,14 @@ import FlightBooking from '../components/Home/FlightBooking'
 import FeaturesFlight from '../components/Home/FeaturesFlight'
 import Newsletter from '../components/Newsletter'
 import Blog from '../components/Home/Blog'
+import FlightDashboard from '../components/Home/FlightDashboard/FlightDashboard'
+import "./styles/Home.scss";
 
 export default function Homepage() {
   return (
-    <div>
+    <div className='home'>
         <Hero/>
+        <FlightDashboard/>
         <AboutUs/>
         <Advantage/>
         <PopularDestinations/>

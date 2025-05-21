@@ -1,0 +1,44 @@
+/* Optional additional CSS for more customization */
+.hero-slide-enter {
+  opacity: 0;
+}
+
+.hero-slide-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.hero-slide-exit {
+  opacity: 1;
+}
+
+.hero-slide-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-out;
+}
+
+/* Enhancing button hover effects */
+.nav-button {
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Optional animation for the country details card */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-card {
+  animation: fadeIn 0.5s ease forwards;
+}
