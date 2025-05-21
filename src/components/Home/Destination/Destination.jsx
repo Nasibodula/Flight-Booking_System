@@ -25,7 +25,7 @@ const PopularDestinations = () => {
   };
 
   return (
-    <div className="popularDestinations">
+    <div className="popularDestinations px-10">
       <div className="container">
         <div className="headline">
           <div className="title">Popular Destinations</div>
