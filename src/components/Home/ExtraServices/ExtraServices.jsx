@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 
 const ExtraService = () => {
   return (
-    <div className="extra-service relative z-10 bg-white flex items-center justify-center">
+    <div className="extra-service relative z-10 bg-white flex items-center justify-center p-2">
       <div className="container">
         <div className="headline flex flex-col items-center justify-center gap-2.5 pt-[60px] pb-5 after:content-[''] after:relative after:block after:bg-red-500 after:w-10 after:h-0.5 after:rounded after:mt-2.5 sm:pt-10">
             <div className="title text-center  font-bold text-gray-800 text-5xl">Extra Services</div>
