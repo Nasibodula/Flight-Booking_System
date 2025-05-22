@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import ArrivalTime from "./components/ArrivalTime/ArrivalTime";
-import DepartureTime from "./components/DepartureTime/DepartureTime";
-import FromCountry from "./components/FromCountry/FromCountry";
-import ToCountry from "./components/ToCountry/ToCountry";
-import FlightNumber from "./components/FlightNumber/FlightNumber";
-import FlightDate from "./components/FlightDate/FlightDate";
+import ArrivalTime from "./components/ArrivalTime";
+import DepartureTime from "./components/DepartureTime";
+import FromCountry from "./components/FromCountry";
+import ToCountry from "./components/ToCountry";
+import FlightNumber from "./components/FlightNumber";
+import FlightDate from "./components/FlightDate";
 
 import { Icon } from "@iconify/react";
 

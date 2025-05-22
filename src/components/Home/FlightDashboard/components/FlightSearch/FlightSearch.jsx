@@ -175,13 +175,13 @@
 
 
 import React, { useState, useEffect } from "react";
-import FromCountry from "./components/FromCountry/FromCountry";
-import ToCountry from "./components/ToCountry/ToCountry";
-import DepartureDate from "./components/DepartureDate/DepartureDate";
-import ReturnDate from "./components/ReturnDate/ReturnDate";
-import TripType from "./components/TripType/TripType";
-import PassengerCount from "./components/PassengerCount/PassengerCount";
-import SearchHistory from "./components/SearchHistory/SearchHistory";
+import FromCountry from "./components/FromCountry";
+import ToCountry from "./components/ToCountry";
+import DepartureDate from "./components/DepartureDate";
+import ReturnDate from "./components/ReturnDate";
+import TripType from "./components/TripType";
+import PassengerCount from "./components/PassengerCount";
+import SearchHistory from "./components/SearchHistory";
 // import Loading from "./components/Loading/Loading";
 
 const FlightSearch = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import PNRCode from "./components/PNRCode/PNRCode";
-import PNRSurname from "./components/PNRSurname/PNRSurname";
+import PNRCode from "./components/PNRCode";
+import PNRSurname from "./components/PNRSurname";
 
 import { Icon } from "@iconify/react";
 

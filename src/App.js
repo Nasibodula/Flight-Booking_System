@@ -1,22 +1,44 @@
+// import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Navbar from './components/Navbar';
+// import Homepage from './Pages/Homepage';
+// import './global.css'
+// import Footer from '../components/Footer/Footer'
+
+// function App() {
+//   return (
+//     <div className="App">
+//       <Router>
+//         <Navbar/>
+//         <Routes>
+//           <Route path='/'  element={<Homepage/>}/>
+//         </Routes>
+
+//       </Router>
+//     </div>
+//   );
+// }
+
+// export default App;
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
+import Header from "./components/Header/Header";
 import Homepage from './Pages/Homepage';
-import Footer from "./components/Footer";
-import './global.css'
+import './global.css';
+import Footer from './components/Footer/Footer';
+
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar/>
+    <Router>
+      <div className="App">
+        <Header />
         <Routes>
-          <Route path='/'  element={<Homepage/>}/>
+          <Route path='/' element={<Homepage />} />
         </Routes>
-        <Footer/>
-      </Router>
-    </div>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
 export default App;
-
